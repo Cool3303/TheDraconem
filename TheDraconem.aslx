@@ -1,0 +1,35 @@
+<!--Saved by Quest 5.8.6836.13983-->
+<asl version="580">
+  <include ref="GamebookCore.aslx" />
+  <game name="The Draconem">
+    <gameid>5ed00794-be3e-4687-9ee8-d8dd13231c14</gameid>
+    <version>0.01</version>
+    <firstpublished>2019</firstpublished>
+    <subtitle>An Attempt</subtitle>
+    <author>Cool3303</author>
+  </game>
+  <object name="Start">
+    <description type="string"></description>
+    <options type="stringdictionary">
+      <item>
+        <key>Horror Show</key>
+        <value>The Ride never ends.</value>
+      </item>
+    </options>
+    <object name="player">
+      <inherit name="defaultplayer" />
+    </object>
+  </object>
+  <object name="Horror Show">
+    <description>{command:command:text}</description>
+    <options type="stringdictionary">
+      <item>
+        <key>Start</key>
+        <value>The Ride never ends.</value>
+      </item>
+    </options>
+  </object>
+  <object name="Page3">
+    <description>This is page 3. Type a description here, and then create links to other pages below.</description>
+  </object>
+</asl>
