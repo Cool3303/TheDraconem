@@ -18,6 +18,11 @@
     <attr name="feature_devmode" type="boolean">false</attr>
     <appendobjectdescription />
     <allowlookdirections type="boolean">false</allowlookdirections>
+    <gridmap />
+    <showcommandbar type="boolean">false</showcommandbar>
+    <borderlesscursor type="boolean">false</borderlesscursor>
+    <shadowbox type="boolean">false</shadowbox>
+    <customstatuspane type="boolean">false</customstatuspane>
   </game>
   <object name="Bright Hallway">
     <inherit name="editor_room" />
@@ -26,6 +31,7 @@
     <usedefaultprefix />
     <descprefix>You are in a</descprefix>
     <dropdestination type="object">Bright Hallway</dropdestination>
+    <attr name="grid_length" type="int">5</attr>
     <object name="Player">
       <inherit name="editor_object" />
       <inherit name="editor_player" />
@@ -33,7 +39,7 @@
       <visible />
       <scenery />
     </object>
-    <object name="Hallway to Hub Door">
+    <object name="HallwayXHub Door">
       <inherit name="editor_object" />
       <inherit name="openable" />
       <alt type="stringlist">
@@ -45,24 +51,45 @@
       <displayverbs type="stringlist">
         <value>Look at</value>
         <value>Open</value>
+        <value>Close</value>
       </displayverbs>
       <feature_container />
       <alias>Wooden Door</alias>
       <openscript type="script">
         MakeObjectVisible (Exit to the Hub)
-        msg ("Well atleast that room looks more normal.")
+        msg ("You open the door. Beyond it lies a Spacious room made out of blank concrete. A jumbled mess of stairs dominates the center of the room.")
+        HelperOpenObject (HallwayXHub Door)
       </openscript>
+      <usestandardverblist type="boolean">false</usestandardverblist>
+      <useindividualverblist type="boolean">false</useindividualverblist>
+      <close />
     </object>
-    <exit name="Exit to the Hub" alias="north" to="The Hub">
+    <exit name="Exit to the Hub" alias="north" to="Hub">
       <inherit name="northdirection" />
       <visible type="boolean">false</visible>
     </exit>
   </object>
-  <object name="The Hub">
+  <object name="Hub">
     <inherit name="editor_room" />
     <dark type="boolean">false</dark>
-    <exit alias="out" to="Bright Hallway">
+    <usedefaultprefix />
+    <darkroomdescription type="string"></darkroomdescription>
+    <attr name="grid_width" type="int">6</attr>
+    <attr name="grid_length" type="int">6</attr>
+    <attr name="grid_fill">SlateGray</attr>
+    <alias>Concrete Room</alias>
+    <exit alias="back into the Hallway" to="Bright Hallway">
       <inherit name="southdirection" />
+      <attr name="grid_length" type="int">1</attr>
     </exit>
+    <exit name="stairwell" alias="up" to="Hub lvl 2">
+      <inherit name="updirection" />
+      <scenery type="boolean">false</scenery>
+      <prefix>a massive</prefix>
+    </exit>
+  </object>
+  <object name="Hub lvl 2">
+    <inherit name="editor_room" />
+    <alias>Concrete Room</alias>
   </object>
 </asl>
