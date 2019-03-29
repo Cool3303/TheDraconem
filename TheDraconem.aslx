@@ -1,35 +1,68 @@
 <!--Saved by Quest 5.8.6836.13983-->
 <asl version="580">
-  <include ref="GamebookCore.aslx" />
-  <game name="The Draconem">
-    <gameid>5ed00794-be3e-4687-9ee8-d8dd13231c14</gameid>
-    <version>0.01</version>
+  <include ref="English.aslx" />
+  <include ref="Core.aslx" />
+  <game name="DraconemAdventure">
+    <gameid>775d33db-6a74-4b07-b48a-382d2abb591d</gameid>
+    <version>1.0</version>
     <firstpublished>2019</firstpublished>
-    <subtitle>An Attempt</subtitle>
-    <author>Cool3303</author>
+    <feature_advancedwearables />
+    <feature_advancedscripts />
+    <showscore />
+    <showhealth />
+    <showmoney />
+    <feature_limitinventory />
+    <feature_lightdark />
+    <feature_asktell />
+    <feature_annotations />
+    <attr name="feature_devmode" type="boolean">false</attr>
+    <appendobjectdescription />
+    <allowlookdirections type="boolean">false</allowlookdirections>
   </game>
-  <object name="Start">
+  <object name="Bright Hallway">
+    <inherit name="editor_room" />
+    <isroom />
     <description type="string"></description>
-    <options type="stringdictionary">
-      <item>
-        <key>Horror Show</key>
-        <value>The Ride never ends.</value>
-      </item>
-    </options>
-    <object name="player">
-      <inherit name="defaultplayer" />
+    <usedefaultprefix />
+    <descprefix>You are in a</descprefix>
+    <dropdestination type="object">Bright Hallway</dropdestination>
+    <object name="Player">
+      <inherit name="editor_object" />
+      <inherit name="editor_player" />
+      <alias>Yourself</alias>
+      <visible />
+      <scenery />
     </object>
+    <object name="Hallway to Hub Door">
+      <inherit name="editor_object" />
+      <inherit name="openable" />
+      <alt type="stringlist">
+        <value>Wooden Door</value>
+        <value>Door</value>
+      </alt>
+      <visible />
+      <scenery type="boolean">false</scenery>
+      <displayverbs type="stringlist">
+        <value>Look at</value>
+        <value>Open</value>
+      </displayverbs>
+      <feature_container />
+      <alias>Wooden Door</alias>
+      <openscript type="script">
+        MakeObjectVisible (Exit to the Hub)
+        msg ("Well atleast that room looks more normal.")
+      </openscript>
+    </object>
+    <exit name="Exit to the Hub" alias="north" to="The Hub">
+      <inherit name="northdirection" />
+      <visible type="boolean">false</visible>
+    </exit>
   </object>
-  <object name="Horror Show">
-    <description>{command:command:text}</description>
-    <options type="stringdictionary">
-      <item>
-        <key>Start</key>
-        <value>The Ride never ends.</value>
-      </item>
-    </options>
-  </object>
-  <object name="Page3">
-    <description>This is page 3. Type a description here, and then create links to other pages below.</description>
+  <object name="The Hub">
+    <inherit name="editor_room" />
+    <dark type="boolean">false</dark>
+    <exit alias="out" to="Bright Hallway">
+      <inherit name="southdirection" />
+    </exit>
   </object>
 </asl>
